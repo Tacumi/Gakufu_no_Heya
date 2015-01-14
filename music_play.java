@@ -4,13 +4,15 @@ import javax.sound.midi.*;
 import java.io.*;
 
 public class music_play{
-	public static void main(String[] args) throws Exception {
-		Sequencer seq = MidiSystem.getSequencer();
-		seq.open();
-		seq.setSequence(MidiSystem.getSequence(new File("./status.mid")));
-		seq.start();
-		while(seq.isRunning())Thread.currentThread().sleep(100);
-		seq.close();
+	Sequencer seq = null;
+	String midiFilename = null;
+	public music_play(String midiFilename){
+		try{
+			this.seq = MidiSystem.getSequencer();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		this.midiFilename = midiFilename;
 		return;
 	}
 	public void start(){
