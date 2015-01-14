@@ -18,12 +18,12 @@ public class screen implements MouseListener{
 		mainframe = new JFrame();
 		mainframe.setLayout(null);
 		mainframe.setBounds(100,100,winWidth,winHeight);
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		musicPlayButton = new pushButton();
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,winWidth/4,winHeight/5);
 		musicPlayButton.setBackground(Color.blue);
 		musicPlayButton.addMouseListener(this);
-		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainframe.add(musicPlayButton);
 
 		mainframe.setVisible(true);
