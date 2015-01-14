@@ -15,6 +15,13 @@ public class music_play{
 		this.midiFilename = midiFilename;
 		return;
 	}
+	public void toggle(){
+		if(seq.isRunning()){
+			this.stop();
+			return;
+		}
+		this.start();
+	}
 	public void start(){
 		if( midiFilename == null || seq == null )
 			return;
