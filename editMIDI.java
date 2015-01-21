@@ -1,10 +1,12 @@
-package GakufunoHeya;
+﻿package GakufunoHeya;
 
-import javax.sound.midi.spi.*;
 import javax.sound.midi.*;
 
 public class editMIDI {
-	public static void main(String[] args) {
+	public static void main(String args[]){
+		createMD();
+	}
+	public static void createMD() {
 		try {
 			// 一秒あたり24フレーム、一フレーム24tick
 			Sequence sequence = new Sequence(Sequence.PPQ, 24);
