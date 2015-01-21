@@ -29,6 +29,7 @@ public class screen implements MouseListener{
 
 		mainframe.setVisible(true);
 	}
+	
 
 	public void mouseClicked(MouseEvent me){
 		if(me.getComponent() == musicPlayButton)
