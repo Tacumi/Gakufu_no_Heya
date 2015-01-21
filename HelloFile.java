@@ -3,7 +3,7 @@ import javax.sound.midi.*;
 public class HelloFile {
   public static void main(String[] args){
     try {
-      //一秒あたり24フレーム、一フレーム24tick
+      //荳遘偵≠縺溘ｊ24繝輔Ξ繝ｼ繝縲∽ｸ繝輔Ξ繝ｼ繝24tick
       Sequence sequence = new Sequence(Sequence.PPQ, 24);
       Track track = sequence.createTrack();
       byte[] data = new byte[1];
