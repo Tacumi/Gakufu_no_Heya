@@ -33,7 +33,7 @@ public class screen implements MouseListener{
 
 	public void mouseClicked(MouseEvent me){
 		if(me.getComponent() == musicPlayButton)
-			mplay.start();
+			mplay.toggle();
 	}
 	public void mouseEntered(MouseEvent me){}
 	public void mouseReleased(MouseEvent me){}
