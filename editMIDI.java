@@ -4,9 +4,9 @@ import javax.sound.midi.*;
 
 public class editMIDI {
 	public static void main(String args[]){
-		editMD();
+		createMD();
 	}
-	public static void editMD() {
+	public static void createMD() {
 		try {
 			// 一秒あたり24フレーム、一フレーム24tick
 			Sequence sequence = new Sequence(Sequence.PPQ, 24);

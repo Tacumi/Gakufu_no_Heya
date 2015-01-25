@@ -21,17 +21,19 @@ public class screen implements MouseListener{
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		musicPlayButton = new pushButton();
-		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,winWidth/4,winHeight/5);
+		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
+								  winWidth/4,winHeight/5);
 		musicPlayButton.setBackground(Color.blue);
 		musicPlayButton.addMouseListener(this);
 		mainframe.add(musicPlayButton);
 
 		mainframe.setVisible(true);
 	}
+	
 
 	public void mouseClicked(MouseEvent me){
 		if(me.getComponent() == musicPlayButton)
-			mplay.start();
+			mplay.toggle();
 	}
 	public void mouseEntered(MouseEvent me){}
 	public void mouseReleased(MouseEvent me){}
