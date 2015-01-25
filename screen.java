@@ -39,12 +39,18 @@ public class screen {
 
 class statusDialog extends JPanel implements MouseListener
 {
-	private final int dialogwidth=400,dialogheight=300;
-	JLabel levelName,levelValue;
-	JLabel moneyName,moneyValue;
-	JLabel expName,expValue;
+	private final int defaultWidth=400,defaultHeight=300;
+	// even index ... Item Name
+	// odd  index ... Item Value
+	JLabel[] statusItem;
 	JProgressBar expBar;
 	public statusDialog(Status stat){
+		statusItem = new JLabel[8];
+		for(int i = 0; i < statusItem.length; i++){
+			statusItem[i] = new JLabel();
+			statusItem[i].setBounds(30+(150*(i%2)),70+(40*(i/2)),30,70);
+			statusItem[i].add(this);
+		}
 	}
 	public void mouseClicked(MouseEvent me){
 		this.setVisible(false);
