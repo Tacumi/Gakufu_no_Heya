@@ -39,11 +39,20 @@ public class screen implements MouseListener{
 	public void mousePressed(MouseEvent me){}
 }
 
-class pushButton extends JPanel{
-	public pushButton(){
-		super();
+class statusDialog extends JPanel implements MouseListener
+{
+	private final int dialogwidth=400,dialogheight=300;
+	JLabel levelName,levelValue;
+	JLabel moneyName,moneyValue;
+	JLabel expName,expValue;
+	JProgressBar expBar;
+	public statusDialog(Status stat){
 	}
-	public void setBounds(int x, int y, int width, int height){
-		super.setBounds(x,y,width,height);
+	public void mouseClicked(MouseEvent me){
+		this.setVisible(false);
 	}
+	public void mouseEntered(MouseEvent me){}
+	public void mouseReleased(MouseEvent me){}
+	public void mouseExited(MouseEvent me){}
+	public void mousePressed(MouseEvent me){}
 }
