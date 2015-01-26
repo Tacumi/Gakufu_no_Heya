@@ -52,15 +52,15 @@ class statusDialog extends JPanel implements MouseListener
 			statusItem[i].add(this);
 		}
 		statusItem[0].setText("Your Level ");
-		statusItem[1].setText(status.getLevel());
+		statusItem[1].setText(stat.getLevel()+"");
 		statusItem[2].setText("Your Money ");
-		statusItem[3].setText(status.getMoney());
+		statusItem[3].setText(stat.getMoney()+"");
 		statusItem[4].setText("Your Exp ");
-		statusItem[5].setText(status.getExp());
+		statusItem[5].setText(stat.getExp()+"");
 		statusItem[6].setText("Your Full");
-		statusItem[7].setText(status.getFull());
-		expBar = new JProgressBar(0,status.getExpLimit());
-		expBar.setValue(status.getExp());
+		statusItem[7].setText(stat.getFull()+"");
+		expBar = new JProgressBar(0,stat.getExpLimit());
+		expBar.setValue(stat.getExp());
 	}
 	public void mouseClicked(MouseEvent me){
 		this.setVisible(false);
