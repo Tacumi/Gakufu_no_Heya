@@ -60,6 +60,17 @@ public class Status{
 			this.name = name;
 		}
 	}
+	public void earnMoney(int earnAmount){
+		setMoney(getMoney()+earnAmount);
+	}
+	public int payMoney(int payAmount){
+		if(payAmount > getMoney()){
+			return -1;
+		}else{
+			setMoney(getMoney()-payAmount);
+			return 0;
+		}
+	}
 	public void increaseExp(int increaseValue){
 		setExp(getExp()+increaseValue);
 		if(getExp() > getExpLimit()){
