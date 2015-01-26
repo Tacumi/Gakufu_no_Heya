@@ -9,6 +9,7 @@ public class screen {
 	music_play mplay;
 	JFrame mainframe;
 	JButton musicPlayButton;
+	JButton statusButton;
 	public static void main(String args[]){
 		new screen();
 	}
@@ -19,6 +20,12 @@ public class screen {
 		mainframe.setLayout(null);
 		mainframe.setBounds(100,100,winWidth,winHeight);
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		statusButton = new JButton();
+		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
+								  winWidth/4,winHeight/5);
+		statusButton.setText("Status");
+		mainframe.add(statusButton);
 
 		musicPlayButton = new musicButton(mplay);
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
