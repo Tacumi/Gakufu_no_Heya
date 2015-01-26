@@ -19,7 +19,7 @@ public class measureList {
 	public String pianoList(String str) {
 		switch (str) {
 		case "0":
-			return ".\\midi\\piano0.mid";
+			return "./midi/piano0.mid";
 		}
 		return "";
 	}
@@ -29,7 +29,7 @@ public class measureList {
 	public String drumList(String str) {
 		switch(str){
 		case "0":
-			return ".\\midi\\drum0.mid";
+			return "./midi/drum0.mid";
 		}
 		return "";
 	}
