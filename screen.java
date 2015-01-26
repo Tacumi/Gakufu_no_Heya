@@ -10,11 +10,11 @@ public class screen {
 	JFrame mainframe;
 	JButton musicPlayButton;
 	JButton statusButton;
+	static final int winWidth=600,winHeight=800;
 	public static void main(String args[]){
 		new screen();
 	}
 	public screen(){
-		int winWidth=600,winHeight=800;
 		mplay = new music_play("./status.mid");
 		mainframe = new JFrame();
 		mainframe.setLayout(null);
