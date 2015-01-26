@@ -13,10 +13,10 @@ public class Status{
 	private String name;
 
 	public Status(){
-		Status("");
+		this("");
 	}
 	public Status(String name){
-		Status(1,0,10,50,name);
+		this(1,0,10,50,name);
 	}
 	public Status(int level,int exp, int expLimit, int money, String name){
 		setLevel(level);
