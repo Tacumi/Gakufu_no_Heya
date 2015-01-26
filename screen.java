@@ -34,14 +34,6 @@ public class screen {
 	}
 }
 
-class pushButton extends JPanel{
-	public pushButton(){
-		super();
-	}
-	public void setBounds(int x, int y, int width, int height){
-		super.setBounds(x,y,width,height);
-	}
-}
 class musicButton extends JButton implements ActionListener {
 	private static music_play mplay;
 
