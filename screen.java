@@ -41,11 +41,15 @@ public class screen implements MouseListener{
 	public void mousePressed(MouseEvent me){}
 }
 
-class pushButton extends JPanel{
-	public pushButton(){
+class musicButton extends JButton implements ActionListener {
+	private static music_play mplay;
+
+	public musicButton (music_play mplay){
 		super();
+		this.mplay = mplay;
+		this.addActionListener(this);
 	}
-	public void setBounds(int x, int y, int width, int height){
-		super.setBounds(x,y,width,height);
+	public void actionPerformed(ActionEvent e){
+		mplay.toggle();
 	}
 }
