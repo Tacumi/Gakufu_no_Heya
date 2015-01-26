@@ -8,8 +8,7 @@ import GakufunoHeya.*;
 public class screen {
 	music_play mplay;
 	JFrame mainframe;
-	JPanel musicPlayButton;
-	JButton musicPlayButton2;
+	JButton musicPlayButton;
 	public static void main(String args[]){
 		new screen();
 	}
@@ -21,13 +20,10 @@ public class screen {
 		mainframe.setBounds(100,100,winWidth,winHeight);
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		musicPlayButton = new pushButton();
-		musicPlayButton2 = new musicButton(mplay);
+		musicPlayButton = new musicButton(mplay);
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
 								  winWidth/4,winHeight/5);
-		musicPlayButton.setBackground(Color.blue);
-		musicPlayButton.addMouseListener(this);
-		musicPlayButton2.setText("Play");
+		musicPlayButton.setText("Play");
 		mainframe.add(musicPlayButton);
 
 		mainframe.setVisible(true);
