@@ -7,8 +7,7 @@ package GakufunoHeya;
 
 public class Status{
 	private int level;
-	private int exp;
-	private int expLimit;
+	private int exp, expLimit;
 	private int money;
 	private int full, fullLimit;
 	private String name;
