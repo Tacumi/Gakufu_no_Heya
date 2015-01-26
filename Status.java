@@ -12,6 +12,7 @@ public class Status{
 	private int money;
 	private int full, fullLimit;
 	private String name;
+	private boolean isDead;
 
 	public int getLevel(){return level;}
 	public int getExp(){return exp;}
@@ -39,6 +40,7 @@ public class Status{
 		setName(name);
 		setFull(full);
 		setFullLimit(fullLimit);
+		isDead = false;
 	}
 	public void setName(String name){
 		if(name == ""){
