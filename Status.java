@@ -90,7 +90,7 @@ public class Status{
 		if(money<0) this.money=0;
 		else this.money=money;
 	}
-	public void setLevel(int level){
+	private void setLevel(int level){
 		if(level<1){
 			level = 1;
 		}else{
@@ -98,7 +98,7 @@ public class Status{
 		}
 		return;
 	}
-	public void setExp(int exp){
+	private void setExp(int exp){
 		if(exp<0){
 			exp = 0;
 		}else{
@@ -106,7 +106,7 @@ public class Status{
 		}
 		return;
 	}
-	public void setExpLimit(int expLimit){
+	private void setExpLimit(int expLimit){
 		if(expLimit<1){
 			expLimit = 1;
 		}else{
