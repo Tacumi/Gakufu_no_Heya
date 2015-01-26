@@ -9,6 +9,7 @@ public class Status{
 	private int level;
 	private int exp;
 	private int expLimit;
+	private int money;
 	private String name;
 
 	public Status(){
@@ -22,6 +23,10 @@ public class Status{
 		setExp(exp);
 		setExpLimit(expLimit);
 		setName(name);
+	}
+	public void setMoney(int money){
+		if(money<0) this.money=0;
+		else this.money=money;
 	}
 	public void setLevel(int level){
 		if(level<1){
@@ -63,6 +68,7 @@ public class Status{
 	public int getLevel(){return level;}
 	public int getExp(){return exp;}
 	public int getExpLimit(){return expLimit;}
+	public int getMoney(){return money;}
 	public String getName(){return name;}
 
 	private void levelUp(){
