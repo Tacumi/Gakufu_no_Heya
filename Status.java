@@ -16,12 +16,13 @@ public class Status{
 		Status("");
 	}
 	public Status(String name){
-		Status(1,0,10,name);
+		Status(1,0,10,50,name);
 	}
-	public Status(int level,int exp, int expLimit,String name){
+	public Status(int level,int exp, int expLimit, int money, String name){
 		setLevel(level);
 		setExp(exp);
 		setExpLimit(expLimit);
+		setMoney(money);
 		setName(name);
 	}
 	public void setMoney(int money){
