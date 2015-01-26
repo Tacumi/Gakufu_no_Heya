@@ -9,6 +9,7 @@ public class screen implements MouseListener{
 	music_play mplay;
 	JFrame mainframe;
 	JPanel musicPlayButton;
+	JButton musicPlayButton2;
 	public static void main(String args[]){
 		new screen();
 	}
@@ -21,10 +22,12 @@ public class screen implements MouseListener{
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		musicPlayButton = new pushButton();
+		musicPlayButton2 = new musicButton(mplay);
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
 								  winWidth/4,winHeight/5);
 		musicPlayButton.setBackground(Color.blue);
 		musicPlayButton.addMouseListener(this);
+		musicPlayButton2.setText("Play");
 		mainframe.add(musicPlayButton);
 
 		mainframe.setVisible(true);
@@ -47,5 +50,18 @@ class pushButton extends JPanel{
 	}
 	public void setBounds(int x, int y, int width, int height){
 		super.setBounds(x,y,width,height);
+	}
+}
+class musicButton extends JButton implements ActionListener {
+	private static music_play mplay;
+
+	public musicButton (music_play mplay){
+		super();
+		this.mplay = mplay;
+		this.addActionListener(this);
+	}
+	public void actionPerformed(ActionEvent e){
+		this.setText(this.getText().equals("Play")?"Stop":"Play");
+		mplay.toggle();
 	}
 }
