@@ -2,35 +2,47 @@ package GakufunoHeya;
 
 public class measureList {
 
-	/**
-	public void strToFileName(String str) {
-		switch (str.substring(0, 1)) {
-		case "p":
-			pianoList(str);
-			break;
-		case "d":
-			drumList(str);
-			break;
-		}
-	}**/
+	final byte amountPiano = 2;
+	final byte amountBase = 2;
+	final byte amountDrum = 2;
+	final static short bpm = 100;
 
-	final byte amountPiano = 1;
-
-	public String pianoList(String str) {
+	public static String pianoList(String str) {
 		switch (str) {
 		case "0":
 			return "./midi/piano0.mid";
+		case "1":
+			return "./midi/piano1.mid";
+		default:
+			System.err.println("Can't read this measure name!!");
+			System.err.println("imput piano name : " + str);
+			return "";
 		}
-		return "";
 	}
 
-	final byte amountDrum = 1;
+	public static String baseList(String str) {
+		switch (str) {
+		case "0":
+			return "./midi/base0.mid";
+		case "1":
+			return "./midi/base1.mid";
+		default:
+			System.err.println("Can't read this measure name!!");
+			System.err.println("imput base name : " + str);
+			return "";
+		}
+	}
 
-	public String drumList(String str) {
-		switch(str){
+	public static String drumList(String str) {
+		switch (str) {
 		case "0":
 			return "./midi/drum0.mid";
+		case "1":
+			return "./midi/drum1.mid";
+		default:
+			System.err.println("Can't read this measure name!!");
+			System.err.println("imput drum name : " + str);
+			return "";
 		}
-		return "";
 	}
 }
