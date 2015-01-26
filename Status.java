@@ -12,6 +12,12 @@ public class Status{
 	private int money;
 	private String name;
 
+	public int getLevel(){return level;}
+	public int getExp(){return exp;}
+	public int getExpLimit(){return expLimit;}
+	public int getMoney(){return money;}
+	public String getName(){return name;}
+
 	public Status(){
 		this("");
 	}
@@ -77,11 +83,6 @@ public class Status{
 			levelUp();
 		}
 	}
-	public int getLevel(){return level;}
-	public int getExp(){return exp;}
-	public int getExpLimit(){return expLimit;}
-	public int getMoney(){return money;}
-	public String getName(){return name;}
 
 	private void levelUp(){
 		setLevel(getLevel()+1);
