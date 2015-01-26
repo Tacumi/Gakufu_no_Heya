@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import GakufunoHeya.*;
 
-public class screen implements MouseListener{
+public class screen {
 	music_play mplay;
 	JFrame mainframe;
 	JPanel musicPlayButton;
@@ -32,16 +32,6 @@ public class screen implements MouseListener{
 
 		mainframe.setVisible(true);
 	}
-	
-
-	public void mouseClicked(MouseEvent me){
-		if(me.getComponent() == musicPlayButton)
-			mplay.toggle();
-	}
-	public void mouseEntered(MouseEvent me){}
-	public void mouseReleased(MouseEvent me){}
-	public void mouseExited(MouseEvent me){}
-	public void mousePressed(MouseEvent me){}
 }
 
 class pushButton extends JPanel{
