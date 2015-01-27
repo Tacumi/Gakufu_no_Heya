@@ -8,10 +8,13 @@ import GakufunoHeya.*;
 public class screen {
 	static music_play mplay;
 	static JFrame mainframe;
+	static JPanel statusPanel;
 	static JButton musicPlayButton;
 	static JButton statusButton;
+	static Status status;
 	static final int winWidth=600,winHeight=800;
 	public static void main(String args[]){
+		status = new Status();
 		new screen();
 	}
 	public screen(){
@@ -21,7 +24,11 @@ public class screen {
 		mainframe.setBounds(100,100,winWidth,winHeight);
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		statusButton = new JButton();
+		statusPanel = new StatusPanel(status);
+		statusPanel.setBounds(0,0,winWidth,100);
+		mainframe.add(statusPanel);
+
+		statusButton = new StatusButton(status);
 		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
 								  winWidth/4,winHeight/5);
 		statusButton.setText("Status");
