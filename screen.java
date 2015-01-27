@@ -6,10 +6,10 @@ import javax.swing.*;
 import GakufunoHeya.*;
 
 public class screen {
-	music_play mplay;
-	JFrame mainframe;
-	JButton musicPlayButton;
-	JButton statusButton;
+	static music_play mplay;
+	static JFrame mainframe;
+	static JButton musicPlayButton;
+	static JButton statusButton;
 	static final int winWidth=600,winHeight=800;
 	public static void main(String args[]){
 		new screen();
