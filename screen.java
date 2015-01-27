@@ -36,7 +36,50 @@ public class screen {
 		mainframe.setVisible(true);
 	}
 }
+class StatusPanel extends JPanel{
+	JPanel namePanel,expProgressPanel,levelPanel,moneyPanel;
+	JLabel nameLabel,expProgressLabel,levelLabel,moneyLabel;
+	JProgressBar expProgressBar;
+	public StatusPanel(Status status){
+		this.setLayout(null);
+		namePanel = new JPanel();
+		namePanel.setBounds(0,0,400,50);
+		nameLabel = new JLabel();
+		nameLabel.setBounds(5,5,100,40);
+		namePanel.add(nameLabel);
+		this.add(namePanel);
 
+		expProgressPanel = new JPanel();
+		expProgressPanel.setBounds(0,50,400,50);
+		expProgressLabel = new JLabel();
+		expProgressBar = new JProgressBar(0,status.getExpLimit());
+		expProgressPanel.add(expProgressBar);
+		expProgressPanel.add(expProgressLabel);
+		this.add(expProgressPanel);
+
+		levelPanel = new JPanel();
+		levelPanel.setBounds(400,0,200,50);
+		levelLabel = new JLabel();
+		levelLabel.setBounds(0,0,200,50);
+		this.add(levelPanel);
+
+		moneyPanel = new JPanel();
+		moneyPanel.setBounds(400,50,200,50);
+		moneyLabel = new JLabel();
+		moneyPanel.setBounds(0,0,200,50);
+		this.add(moneyLabel);
+
+		this.setVisible(true);
+		updateStatus(status);
+	}
+	public void updateStatus(Status status){
+		nameLabel.setText(status.getName());
+		expProgressLabel.setText("Exp :" + status.getExp());
+		expProgressBar.setValue(status.getExp());
+		levelLabel.setText("Lv :" + status.getLevel());
+		moneyLabel.setText("PM :" + status.getMoney());
+	}
+}
 class statusDialog extends JPanel implements MouseListener
 {
 	private final int defaultWidth=400,defaultHeight=300;
