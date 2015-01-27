@@ -94,8 +94,8 @@ class StatusPanel extends JPanel{
 class statusDialog extends JPanel implements MouseListener
 {
 	private final int defaultWidth=400,defaultHeight=300;
-	// even index ... Item Name
-	// odd  index ... Item Value
+	// even index ... Element Name
+	// odd  index ... Element Value
 	JLabel[] statusItem;
 	JProgressBar expBar;
 	public statusDialog(Status stat){
