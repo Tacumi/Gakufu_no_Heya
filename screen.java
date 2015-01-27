@@ -89,6 +89,7 @@ class StatusPanel extends JPanel{
 		expProgressBar.setValue(status.getExp());
 		levelLabel.setText("Lv :" + status.getLevel());
 		moneyLabel.setText("PM :" + status.getMoney());
+		repaint();
 	}
 }
 class statusDialog extends JPanel implements MouseListener
@@ -115,6 +116,7 @@ class statusDialog extends JPanel implements MouseListener
 		statusItem[7].setText(stat.getFull()+"");
 		expBar = new JProgressBar(0,stat.getExpLimit());
 		expBar.setValue(stat.getExp());
+		repaint();
 	}
 	public void mouseClicked(MouseEvent me){
 		this.setVisible(false);
