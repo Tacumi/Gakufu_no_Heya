@@ -75,7 +75,7 @@ public class Status{
 			levelUp();
 		}
 	}
-	private void setFull(int full){
+	public void setFull(int full){
 		if(full<1){
 			isDead=true;
 			full=0;
@@ -86,11 +86,11 @@ public class Status{
 				this.full = getFullLimit();
 		}
 	}
-	private void setMoney(int money){
+	public void setMoney(int money){
 		if(money<0) this.money=0;
 		else this.money=money;
 	}
-	private void setLevel(int level){
+	public void setLevel(int level){
 		if(level<1){
 			level = 1;
 		}else{
@@ -98,7 +98,7 @@ public class Status{
 		}
 		return;
 	}
-	private void setExp(int exp){
+	public void setExp(int exp){
 		if(exp<0){
 			exp = 0;
 		}else{
@@ -106,7 +106,7 @@ public class Status{
 		}
 		return;
 	}
-	private void setExpLimit(int expLimit){
+	public void setExpLimit(int expLimit){
 		if(expLimit<1){
 			expLimit = 1;
 		}else{
@@ -114,7 +114,7 @@ public class Status{
 		}
 		return;
 	}
-	private void setFullLimit(int limit){
+	public void setFullLimit(int limit){
 		this.fullLimit = limit;
 	}
 
