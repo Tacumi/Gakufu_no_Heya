@@ -36,6 +36,17 @@ public class screen {
 		mainframe.setVisible(true);
 	}
 }
+class StatusButton extends JButton implements ActionListener{
+	private Status status;
+	public StatusButton(Status status){
+		super();
+		this.status = status;
+	}
+	public void actionPerformed(ActionEvent e){
+		new statusDialog(status);
+	}
+}
+
 class StatusPanel extends JPanel{
 	JPanel namePanel,expProgressPanel,levelPanel,moneyPanel;
 	JLabel nameLabel,expProgressLabel,levelLabel,moneyLabel;
