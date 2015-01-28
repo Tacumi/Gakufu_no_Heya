@@ -7,21 +7,88 @@ package GakufunoHeya;
 
 public class Status{
 	private int level;
-	private int exp;
-	private int expLimit;
+	private int exp, expLimit;
+	private int money;
+	private int full, fullLimit;
 	private String name;
+	private boolean isDead;
+
+	public int getLevel(){return level;}
+	public int getExp(){return exp;}
+	public int getExpLimit(){return expLimit;}
+	public int getMoney(){return money;}
+	public int getFull(){return full;}
+	public int getFullLimit(){return fullLimit;}
+	public String getName(){return name;}
 
 	public Status(){
-		Status("");
+		this("");
 	}
 	public Status(String name){
-		Status(1,0,10,name);
+		this(1,0,10,50,name);
 	}
-	public Status(int level,int exp, int expLimit,String name){
+	public Status(int level,int exp, int expLimit, int money, String name){
+		this(level,exp,expLimit,money,50,  100,      name);
+		/*   level exp expLimit money full fulllimit name */
+	}
+	public Status(int level,int exp, int expLimit,int money, int full, int fullLimit, String name){
 		setLevel(level);
 		setExp(exp);
 		setExpLimit(expLimit);
+		setMoney(money);
 		setName(name);
+		setFull(full);
+		setFullLimit(fullLimit);
+		isDead = false;
+	}
+	public void setName(String name){
+		if(name == ""){
+			this.name = "Jenco";
+		}else{
+			this.name = name;
+		}
+	}
+	public void earnMoney(int earnAmount){
+		setMoney(getMoney()+earnAmount);
+	}
+	public int payMoney(int payAmount){
+		if(payAmount > getMoney()){
+			return -1;
+		}else{
+			setMoney(getMoney()-payAmount);
+			return 0;
+		}
+	}
+	public int eatFoods(){
+		if(getFull() + 40 < getFullLimit() + 20){
+			setFull(getFull() + 40);
+			increaseExp(10);
+			return 0;
+		}else{
+			// won't eat food motion
+			return -1;
+		}
+	}
+	public void increaseExp(int increaseValue){
+		setExp(getExp()+increaseValue);
+		if(getExp() > getExpLimit()){
+			levelUp();
+		}
+	}
+	public void setFull(int full){
+		if(full<1){
+			isDead=true;
+			full=0;
+		}else{
+			if(full < getFullLimit())
+				this.full = full;
+			else
+				this.full = getFullLimit();
+		}
+	}
+	public void setMoney(int money){
+		if(money<0) this.money=0;
+		else this.money=money;
 	}
 	public void setLevel(int level){
 		if(level<1){
@@ -47,27 +114,14 @@ public class Status{
 		}
 		return;
 	}
-	public void setName(String name){
-		if(name == ""){
-			this.name = "Jenco";
-		}else{
-			this.name = name;
-		}
+	public void setFullLimit(int limit){
+		this.fullLimit = limit;
 	}
-	public void increaseExp(int increaseValue){
-		setExp(getExp()+increaseValue);
-		if(getExp() > getExpLimit()){
-			levelUp();
-		}
-	}
-	public int getLevel(){return level;}
-	public int getExp(){return exp;}
-	public int getExpLimit(){return expLimit;}
-	public String getName(){return name;}
 
 	private void levelUp(){
 		setLevel(getLevel()+1);
 		setExp(getExp()-getExpLimit());
 		setExpLimit(getExpLimit()+10*getLevel());
+		setFullLimit(getFullLimit() + 5);
 	}
 }
