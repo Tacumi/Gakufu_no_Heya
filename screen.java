@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import GakufunoHeya.*;
 
-public class screen {
+public class screen extends JPanel implements ActionListener{
 	static music_play mplay;
 	static JFrame mainframe;
 	static JPanel statusPanel;
@@ -50,7 +50,8 @@ class StatusButton extends JButton implements ActionListener{
 		this.status = status;
 	}
 	public void actionPerformed(ActionEvent e){
-		new statusDialog(status);
+		statusDialog.setVisible(true);
+		repaint();
 	}
 }
 
