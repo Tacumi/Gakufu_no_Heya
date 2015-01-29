@@ -25,8 +25,7 @@ public class fileio{
 	}
 	public void saveStatus(){
 		try{
-			PrintWriter pw = new PrintWriter(
-					new OutputStreamWriter(new FileOutputStream(this.saveFile)));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(this.saveFile)));
 			pw.printf("%d,%d,%d,%d,%d,%d,%s\n",
 					stat.getLevel(),
 					stat.getExp(),
@@ -35,7 +34,8 @@ public class fileio{
 					stat.getFull(),
 					stat.getFullLimit(),
 					stat.getName());
-			pw.close()
+			pw.flush();
+			pw.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
