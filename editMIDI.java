@@ -6,34 +6,41 @@ import javax.sound.midi.*;
 public class editMIDI {
 	public File saveMIDI;
 	public static final String saveMIDIName = "status.mid";
-	
+
 	public editMIDI() {
 		checkMIDI();
+		byte RamdomB = (byte) (Math.random() * measureList.amountBase);
+		byte RandomD = (byte) (Math.random() * measureList.amountDrum);
+
+		appendMIDI(measureList.baseList(RamdomB));
+		appendMIDI(measureList.drumList(RandomD));
 	}
-	void appendMIDI(String appendFileName){
-		Track[] addTrack,mainTrack;
-		Sequence appendSequence,mainSequence;
+
+	void appendMIDI(String appendFileName) {
+		Track[] addTrack, mainTrack;
+		Sequence appendSequence, mainSequence;
 		MidiEvent mie;
 		long tickplus;
-		try{
+		try {
 			mainSequence = MidiSystem.getSequence(saveMIDI);
 			appendSequence = MidiSystem.getSequence(new File(appendFileName));
 			mainTrack = mainSequence.getTracks();
 			addTrack = appendSequence.getTracks();
-			for(int i = 0; i < addTrack.length; i++){
+			for (int i = 0; i < addTrack.length; i++) {
 				int tsize = addTrack[i].size();
 				tickplus = mainTrack[i].ticks();
-				for(int j = 0; j < tsize; j++){
+				for (int j = 0; j < tsize; j++) {
 					mie = addTrack[i].get(j);
-					mie.setTick(mie.getTick()+tickplus);
+					mie.setTick(mie.getTick() + tickplus);
 					mainTrack[i].add(mie);
 				}
 			}
 			MidiSystem.write(mainSequence, 0, saveMIDI);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	void checkMIDI() {
 		try {
 			saveMIDI = new File(saveMIDIName);
