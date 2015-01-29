@@ -43,7 +43,7 @@ public class fileio{
 	public void loadStatus(){
 		String[] valueString;
 		try{
-			BufferedReader br = new BufferedReader(FileReader(this.saveFile));
+			BufferedReader br = new BufferedReader(new FileReader(this.saveFile));
 			valueString = br.readLine().split(",");
 
 			stat.setLevel(Integer.parseInt(valueString[0]));
