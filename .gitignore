@@ -12,3 +12,6 @@
 hs_err_pid*
 *.orig
 Makefile
+
+#personal reason
+*.lnk
