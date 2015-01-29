@@ -79,7 +79,7 @@ public class editMIDI {
 					tickcheck = false;
 				}
 			}
-
+			MidiSystem.write(mainSequence, 1, saveMIDI);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
