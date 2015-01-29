@@ -69,10 +69,11 @@ public class editMIDI {
 				message = new ShortMessage();
 				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
 				tickcount += pitchlength;
-				if(tickcount <= 192){
-					mainTrack[0].add(new MidiEvent(message,tickcount + tickplus));
-				}else{
-					mainTrack[0].add(new MidiEvent(message,192 + tickplus));
+				if (tickcount <= 192) {
+					mainTrack[0].add(new MidiEvent(message, tickcount
+							+ tickplus));
+				} else {
+					mainTrack[0].add(new MidiEvent(message, 192 + tickplus));
 					tickcheck = false;
 				}
 			}
@@ -102,11 +103,6 @@ public class editMIDI {
 			Sequence sequence = new Sequence(Sequence.PPQ, 24);
 			Track track = sequence.createTrack();
 
-			int channel = 0;
-			int pitch = 48;
-			int velocity = 100;
-			int instrument = 6;
-
 			MetaMessage mmessage = new MetaMessage();
 			int tempo = 105;
 			int l = 60 * 1000000 / tempo;
@@ -114,10 +110,20 @@ public class editMIDI {
 					(byte) (l % 65536 / 256), (byte) (l % 256) }, 3);
 			track.add(new MidiEvent(mmessage, 0));
 
-			ShortMessage message = new ShortMessage();
-			message.setMessage(ShortMessage.PROGRAM_CHANGE, channel,
-					instrument, 0);
-			track.add(new MidiEvent(message, 0));
+			// setting Melody(Piano) Track
+			ShortMessage messageP = new ShortMessage();
+			messageP.setMessage(ShortMessage.PROGRAM_CHANGE, 0, 01, 0);
+			track.add(new MidiEvent(messageP, 0));
+
+			// setting Base Track
+			ShortMessage messageB = new ShortMessage();
+			messageB.setMessage(ShortMessage.PROGRAM_CHANGE, 1, 33, 0);
+			track.add(new MidiEvent(messageB, 0));
+
+			// setting Drum Track
+			ShortMessage messageD = new ShortMessage();
+			messageD.setMessage(ShortMessage.PROGRAM_CHANGE, 9, 00, 0);
+			track.add(new MidiEvent(messageD, 0));
 
 			MidiSystem.write(sequence, 0, saveMIDI);
 		} catch (Exception e) {
