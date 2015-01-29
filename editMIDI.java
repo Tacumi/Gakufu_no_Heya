@@ -10,6 +10,8 @@ public class editMIDI {
 
 	public editMIDI() {
 		checkMIDI();
+	}
+	public void randomAppend(){
 		byte RamdomB = (byte) (Math.random() * measureList.amountBase);
 		byte RandomD = (byte) (Math.random() * measureList.amountDrum);
 
@@ -28,7 +30,7 @@ public class editMIDI {
 			appendSequence = MidiSystem.getSequence(new File(appendFileName));
 			mainTrack = mainSequence.getTracks();
 			addTrack = appendSequence.getTracks();
-			for (int i = 0; i < addTrack.length; i++) {
+			for (int i = 0; i < addTrack.length && i < mainTrack.length; i++) {
 				int tsize = addTrack[i].size();
 				tickplus = mainTrack[i].ticks();
 				for (int j = 0; j < tsize; j++) {
@@ -37,7 +39,7 @@ public class editMIDI {
 					mainTrack[i].add(mie);
 				}
 			}
-			MidiSystem.write(mainSequence, 0, saveMIDI);
+			MidiSystem.write(mainSequence, 1, saveMIDI);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,11 +65,11 @@ public class editMIDI {
 				int pitch = pitchList[pitchLot];
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
+				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 120);
 				mainTrack[0].add(new MidiEvent(message, tickcount + tickplus));
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 120);
 				tickcount += pitchlength;
 				if (tickcount <= 192) {
 					mainTrack[0].add(new MidiEvent(message, tickcount
@@ -99,35 +101,34 @@ public class editMIDI {
 	void createMIDI() {
 		try {
 			saveMIDI.createNewFile();
-
-			Sequence sequence = new Sequence(Sequence.PPQ, 24);
-			Track track = sequence.createTrack();
-
+			Sequence sequence = new Sequence(Sequence.PPQ, 24,10);
+			
+			Track[] track = sequence.getTracks();
 			MetaMessage mmessage = new MetaMessage();
 			int tempo = 105;
 			int l = 60 * 1000000 / tempo;
 			mmessage.setMessage(0x51, new byte[] { (byte) (l / 65536),
 					(byte) (l % 65536 / 256), (byte) (l % 256) }, 3);
-			track.add(new MidiEvent(mmessage, 0));
+			track[0].add(new MidiEvent(mmessage, 0));
 
 			// setting Melody(Piano) Track
 			ShortMessage messageP = new ShortMessage();
 			messageP.setMessage(ShortMessage.PROGRAM_CHANGE, 0, 01, 0);
-			track.add(new MidiEvent(messageP, 0));
+			track[0].add(new MidiEvent(messageP, 0));
 
 			// setting Base Track
 			ShortMessage messageB = new ShortMessage();
 			messageB.setMessage(ShortMessage.PROGRAM_CHANGE, 1, 33, 0);
-			track.add(new MidiEvent(messageB, 0));
+			track[1].add(new MidiEvent(messageB, 0));
 
 			// setting Drum Track
 			ShortMessage messageD = new ShortMessage();
 			messageD.setMessage(ShortMessage.PROGRAM_CHANGE, 9, 00, 0);
-			track.add(new MidiEvent(messageD, 0));
+			track[9].add(new MidiEvent(messageD, 0));
 
 			MidiSystem.write(sequence, 0, saveMIDI);
 		} catch (Exception e) {
-			System.err.println(e);
+			e.printStackTrace();
 		}
 	}
 

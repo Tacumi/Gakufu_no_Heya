@@ -17,6 +17,7 @@ public class screen extends JPanel implements ActionListener{
 	static Status status;
 	static StatusDialog statusDialog;
 	static final int winWidth=600,winHeight=800;
+	static JButton itemButton;
 
 	public static void main(String args[]){
 		status = new Status();
@@ -34,6 +35,12 @@ public class screen extends JPanel implements ActionListener{
 		statusPanel.setBounds(0,0,winWidth,100);
 		statusPanel.setBorder(new LineBorder(Color.green,2,true));
 		mainframe.add(statusPanel);
+
+		itemButton = new ItemButton(new editMIDI(),status);
+		itemButton.setBounds(0,winHeight-winHeight/5,
+				winWidth/4,winHeight/5);
+		itemButton.setText("Use Item");
+		mainframe.add(itemButton);
 
 		statusButton = new JButton();
 		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
