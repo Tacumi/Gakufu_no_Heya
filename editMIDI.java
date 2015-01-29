@@ -1,6 +1,7 @@
 package GakufunoHeya;
 
 import java.io.*;
+
 import javax.sound.midi.*;
 
 public class editMIDI {
@@ -14,6 +15,7 @@ public class editMIDI {
 
 		appendMIDI(measureList.baseList(RamdomB));
 		appendMIDI(measureList.drumList(RandomD));
+		appendPiano();
 	}
 
 	void appendMIDI(String appendFileName) {
@@ -36,6 +38,45 @@ public class editMIDI {
 				}
 			}
 			MidiSystem.write(mainSequence, 0, saveMIDI);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	void appendPiano() {
+		Track[] mainTrack;
+		Sequence mainSequence;
+		ShortMessage message = new ShortMessage();
+		long tickplus;
+		short tickcount = 0;
+		boolean tickcheck = true;
+		try {
+			mainSequence = MidiSystem.getSequence(saveMIDI);
+			mainTrack = mainSequence.getTracks();
+			tickplus = mainTrack[0].ticks();
+
+			while (tickcheck) {
+				int pitchlength = 12 * (int) (Math.random() * 3 + 1);
+				int[] pitchList = { 45, 47, 48, 50, 51, 53, 55, 57, 59, 60, 62,
+						64, 65, 67 };
+				int pitchLot = (int) (Math.random() * 14);
+				int pitch = pitchList[pitchLot];
+
+				message = new ShortMessage();
+				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 100);
+				mainTrack[0].add(new MidiEvent(message, tickcount + tickplus));
+
+				message = new ShortMessage();
+				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 100);
+				tickcount += pitchlength;
+				if(tickcount <= 192){
+					mainTrack[0].add(new MidiEvent(message,tickcount + tickplus));
+				}else{
+					mainTrack[0].add(new MidiEvent(message,192 + tickplus));
+					tickcheck = false;
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
