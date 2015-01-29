@@ -6,10 +6,10 @@ import GakufunoHeya.*;
 public class fileio{
 	private File saveFile;
 	private Status stat;
-	public static final String saveFileName = "status.sav"
+	public static final String saveFileName = "status.sav";
 
 	public fileio(Status stat){
-		saveFile = new File(saveFileName,false);
+		saveFile = new File(saveFileName);
 		this.stat = stat;
 		if(isReadable(saveFile)){
 			// no operation
@@ -30,10 +30,10 @@ public class fileio{
 			pw.printf("%d,%d,%d,%d,%d,%d,%s\n",
 					stat.getLevel(),
 					stat.getExp(),
-					stat.getExpLimit()
-					stat.getMoney()
-					stat.getFull()
-					stat.getFullLimit()
+					stat.getExpLimit(),
+					stat.getMoney(),
+					stat.getFull(),
+					stat.getFullLimit(),
 					stat.getName());
 			pw.close()
 		}catch(IOException e){
