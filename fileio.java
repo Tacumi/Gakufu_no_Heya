@@ -1,6 +1,8 @@
 package GakufunoHeya;
 
 import java.io.*;
+
+import java.io.*;
 import GakufunoHeya.*;
 
 public class fileio{
@@ -68,3 +70,7 @@ public class fileio{
 		return false;
 	}
 }
+
+;
+        
+
