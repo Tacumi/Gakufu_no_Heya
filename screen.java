@@ -149,16 +149,4 @@ class StatusDialog extends JPanel implements MouseListener
 	public void mouseExited(MouseEvent me){}
 	public void mousePressed(MouseEvent me){}
 }
-class musicButton extends JButton implements ActionListener {
-	private static music_play mplay;
-
-	public musicButton (music_play mplay){
-		super();
-		this.mplay = mplay;
-		this.addActionListener(this);
-	}
-	public void actionPerformed(ActionEvent e){
-		this.setText(this.getText().equals("Play")?"Stop":"Play");
-		mplay.toggle();
-	}
 }
