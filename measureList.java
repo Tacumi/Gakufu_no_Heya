@@ -22,7 +22,7 @@ public class measureList {
 		}
 	}
 
-	public static String drumList(int i) {
+	public static String drumList(byte i) {
 		switch (i) {
 		case 0:
 			return "./midi/drum0.mid";
