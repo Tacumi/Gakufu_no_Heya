@@ -35,7 +35,7 @@ public class screen extends JPanel implements ActionListener{
 		statusPanel.setBorder(new LineBorder(Color.green,2,true));
 		mainframe.add(statusPanel);
 
-		statusButton = new StatusButton(status);
+		statusButton = new JButton();
 		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
 				winWidth/4,winHeight/5);
 		statusButton.setText("Status");

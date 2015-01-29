@@ -1,4 +1,4 @@
-package_GakufunoHeya;
+package GakufunoHeya;
 
 import java.io.*;
 
