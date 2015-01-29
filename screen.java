@@ -5,14 +5,16 @@ import java.awt.event.*;
 import javax.swing.*;
 import GakufunoHeya.*;
 
-public class screen {
+public class screen extends JPanel implements ActionListener{
 	static music_play mplay;
 	static JFrame mainframe;
 	static JPanel statusPanel;
 	static JButton musicPlayButton;
 	static JButton statusButton;
 	static Status status;
+	static JPanel statusDialog;
 	static final int winWidth=600,winHeight=800;
+
 	public static void main(String args[]){
 		status = new Status();
 		new screen();
@@ -30,27 +32,28 @@ public class screen {
 
 		statusButton = new StatusButton(status);
 		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
-								  winWidth/4,winHeight/5);
+				winWidth/4,winHeight/5);
 		statusButton.setText("Status");
+		statusButton.addActionListener(this);
+		statusButton.setActionCommand("status");
 		mainframe.add(statusButton);
 
 		musicPlayButton = new musicButton(mplay);
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
-								  winWidth/4,winHeight/5);
+				winWidth/4,winHeight/5);
 		musicPlayButton.setText("Play");
 		mainframe.add(musicPlayButton);
 
+		statusDialog = new StatusDialog(status);
+		statusDialog.setBounds(100,250,400,300);
+		mainframe.add(statusDialog);
+
 		mainframe.setVisible(true);
-	}
-}
-class StatusButton extends JButton implements ActionListener{
-	private Status status;
-	public StatusButton(Status status){
-		super();
-		this.status = status;
+		statusDialog.setVisible(false);
 	}
 	public void actionPerformed(ActionEvent e){
-		new statusDialog(status);
+		statusDialog.setVisible(true);
+		repaint();
 	}
 }
 
@@ -99,20 +102,33 @@ class StatusPanel extends JPanel{
 		repaint();
 	}
 }
-class statusDialog extends JPanel implements MouseListener
+class StatusDialog extends JPanel implements MouseListener
 {
 	private final int defaultWidth=400,defaultHeight=300;
 	// even index ... Element Name
 	// odd  index ... Element Value
-	JLabel[] statusItem;
-	JProgressBar expBar;
-	public statusDialog(Status stat){
+	private JLabel[] statusItem;
+	private JProgressBar expBar;
+	private Status stat;
+
+	public StatusDialog(Status stat){
+		super();
+		this.setBackground(Color.red);
+		this.stat = stat;
+		this.addMouseListener(this);
 		statusItem = new JLabel[8];
 		for(int i = 0; i < statusItem.length; i++){
 			statusItem[i] = new JLabel();
 			statusItem[i].setBounds(30+(150*(i%2)),70+(40*(i/2)),150,40);
 			this.add(statusItem[i]);
 		}
+		expBar = new JProgressBar(0,stat.getExpLimit());
+		expBar.setBounds(0,defaultHeight-40,defaultWidth,40);
+		this.add(expBar);
+		updateDialog();
+		this.setVisible(true);
+	}
+	public void updateDialog(){
 		statusItem[0].setText("Your Level ");
 		statusItem[1].setText(stat.getLevel()+"");
 		statusItem[2].setText("Your Money ");
@@ -121,12 +137,12 @@ class statusDialog extends JPanel implements MouseListener
 		statusItem[5].setText(stat.getExp()+"");
 		statusItem[6].setText("Your Full");
 		statusItem[7].setText(stat.getFull()+"");
-		expBar = new JProgressBar(0,stat.getExpLimit());
 		expBar.setValue(stat.getExp());
 		repaint();
 	}
 	public void mouseClicked(MouseEvent me){
 		this.setVisible(false);
+		repaint();
 	}
 	public void mouseEntered(MouseEvent me){}
 	public void mouseReleased(MouseEvent me){}
