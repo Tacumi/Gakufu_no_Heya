@@ -1,8 +1,9 @@
 package GakufunoHeya;
 
 public class editMIDI {
-	public editMIDI() {
-		status sts = new status();
+	String midiFileName;
+	public editMIDI(String midiFileName) {
+		this.midiFileName = midiFileName;
 		measureList mList = new measureList();
 
 		String RamdomP = Integer
