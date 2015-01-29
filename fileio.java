@@ -41,17 +41,18 @@ public class fileio{
 		}
 	}
 	public void loadStatus(){
+		String[] valueString;
 		try{
 			BufferedReader br = new BufferedReader(FileReader(this.saveFile));
-			StringTokenizer st = new StringTokenizer(br.readLine(),",");
+			valueString = br.readLine().split(",");
 
-			stat.setLevel(parseInt(st.nextToken()));
-			stat.setExp(parseInt(st.nextToken()));
-			stat.setExpLimit(parseInt(st.nextToken()));
-			stat.setMoney(parseInt(st.nextToken()));
-			stat.setFull(parseInt(st.nextToken()));
-			stat.setFullLimit(parseInt(st.nextToken()));
-			stat.setName(st.nextToken());
+			stat.setLevel(Integer.parseInt(valueString[0]));
+			stat.setExp(Integer.parseInt(valueString[1]));
+			stat.setExpLimit(Integer.parseInt(valueString[2]));
+			stat.setMoney(Integer.parseInt(valueString[3]));
+			stat.setFull(Integer.parseInt(valueString[4]));
+			stat.setFullLimit(Integer.parseInt(valueString[5]));
+			stat.setName(valueString[6]);
 
 			br.close();
 		}catch(IOException e){
