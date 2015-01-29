@@ -32,7 +32,7 @@ public class screen extends JPanel implements ActionListener{
 
 		statusButton = new StatusButton(status);
 		statusButton.setBounds(winWidth/4*2,winHeight-winHeight/5,
-								  winWidth/4,winHeight/5);
+				winWidth/4,winHeight/5);
 		statusButton.setText("Status");
 		statusButton.addActionListener(this);
 		statusButton.setActionCommand("status");
@@ -40,7 +40,7 @@ public class screen extends JPanel implements ActionListener{
 
 		musicPlayButton = new musicButton(mplay);
 		musicPlayButton.setBounds(winWidth/4*3,winHeight-winHeight/5,
-								  winWidth/4,winHeight/5);
+				winWidth/4,winHeight/5);
 		musicPlayButton.setText("Play");
 		mainframe.add(musicPlayButton);
 
