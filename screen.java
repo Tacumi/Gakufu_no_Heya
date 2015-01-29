@@ -111,7 +111,7 @@ class statusDialog extends JPanel implements MouseListener
 		for(int i = 0; i < statusItem.length; i++){
 			statusItem[i] = new JLabel();
 			statusItem[i].setBounds(30+(150*(i%2)),70+(40*(i/2)),150,40);
-			statusItem[i].add(this);
+			this.add(statusItem[i]);
 		}
 		statusItem[0].setText("Your Level ");
 		statusItem[1].setText(stat.getLevel()+"");
