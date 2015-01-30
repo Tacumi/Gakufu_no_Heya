@@ -65,11 +65,11 @@ public class editMIDI {
 				int pitch = pitchList[pitchLot];
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 120);
+				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 127);
 				mainTrack[0].add(new MidiEvent(message, tickcount + tickplus));
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 120);
+				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 127);
 				tickcount += pitchlength;
 				if (tickcount <= 192) {
 					mainTrack[0].add(new MidiEvent(message, tickcount
@@ -126,7 +126,7 @@ public class editMIDI {
 			messageD.setMessage(ShortMessage.PROGRAM_CHANGE, 9, 00, 0);
 			track[9].add(new MidiEvent(messageD, 0));
 
-			MidiSystem.write(sequence, 0, saveMIDI);
+			MidiSystem.write(sequence, 1, saveMIDI);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
