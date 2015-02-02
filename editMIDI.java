@@ -30,7 +30,7 @@ public class editMIDI {
 			appendSequence = MidiSystem.getSequence(new File(appendFileName));
 			mainTrack = mainSequence.getTracks();
 			addTrack = appendSequence.getTracks();
-			
+
 			for (int i = 0; i < addTrack.length && i < mainTrack.length; i++) {
 				int tsize = addTrack[i].size();
 				tickplus = mainTrack[i].ticks();
@@ -40,7 +40,7 @@ public class editMIDI {
 					mainTrack[i].add(mie);
 				}
 			}
-			
+
 			MidiSystem.write(mainSequence, 1, saveMIDI);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,17 +61,16 @@ public class editMIDI {
 			// add Melody(Piano) Data (2 measure)
 			while (true) {
 				int pitchlength = 12 * (int) (Math.random() * 3 + 1);
-				int[] pitchList = { 45, 47, 48, 50, 51, 53, 55, 57, 59, 60, 62,
-						64, 65, 67 };
-				int pitchLot = (int) (Math.random() * 14);
-				int pitch = pitchList[pitchLot];
+				int[] pitchList = { 55, 57, 59, 60, 62, 64, 65, 67 };
+				int pitchLot = (int) (Math.random() * 8);
+				int pitch = pitchList[pitchLot] + 12;
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_ON, 1, pitch, 127);
+				message.setMessage(ShortMessage.NOTE_ON, 1, pitch, 100);
 				mainTrack[1].add(new MidiEvent(message, tickcount + tickplus));
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_OFF, 1, pitch, 127);
+				message.setMessage(ShortMessage.NOTE_OFF, 1, pitch, 100);
 				tickcount += pitchlength;
 
 				if (tickcount < 192) {
@@ -82,7 +81,7 @@ public class editMIDI {
 					break;
 				}
 			}
-			
+
 			MidiSystem.write(mainSequence, 1, saveMIDI);
 		} catch (Exception e) {
 			e.printStackTrace();
