@@ -11,7 +11,8 @@ public class editMIDI {
 	public editMIDI() {
 		checkMIDI();
 	}
-	public void randomAppend(){
+
+	public void randomAppend() {
 		byte RamdomB = (byte) (Math.random() * measureList.amountBase);
 		byte RandomD = (byte) (Math.random() * measureList.amountDrum);
 
@@ -65,17 +66,17 @@ public class editMIDI {
 				int pitch = pitchList[pitchLot];
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_ON, 0, pitch, 127);
-				mainTrack[0].add(new MidiEvent(message, tickcount + tickplus));
+				message.setMessage(ShortMessage.NOTE_ON, 1, pitch, 127);
+				mainTrack[1].add(new MidiEvent(message, tickcount + tickplus));
 
 				message = new ShortMessage();
-				message.setMessage(ShortMessage.NOTE_OFF, 0, pitch, 127);
+				message.setMessage(ShortMessage.NOTE_OFF, 1, pitch, 127);
 				tickcount += pitchlength;
-				if (tickcount <= 192) {
-					mainTrack[0].add(new MidiEvent(message, tickcount
+				if (tickcount < 192) {
+					mainTrack[1].add(new MidiEvent(message, tickcount
 							+ tickplus));
 				} else {
-					mainTrack[0].add(new MidiEvent(message, 192 + tickplus));
+					mainTrack[1].add(new MidiEvent(message, 192 + tickplus));
 					tickcheck = false;
 				}
 			}
@@ -100,9 +101,10 @@ public class editMIDI {
 
 	void createMIDI() {
 		try {
+			saveMIDI = new File(saveMIDIName);
 			saveMIDI.createNewFile();
-			Sequence sequence = new Sequence(Sequence.PPQ, 24,10);
-			
+			Sequence sequence = new Sequence(Sequence.PPQ, 24, 10);
+
 			Track[] track = sequence.getTracks();
 			MetaMessage mmessage = new MetaMessage();
 			int tempo = 105;
@@ -113,13 +115,13 @@ public class editMIDI {
 
 			// setting Melody(Piano) Track
 			ShortMessage messageP = new ShortMessage();
-			messageP.setMessage(ShortMessage.PROGRAM_CHANGE, 0, 01, 0);
-			track[0].add(new MidiEvent(messageP, 0));
+			messageP.setMessage(ShortMessage.PROGRAM_CHANGE, 1, 01 - 1, 0);
+			track[1].add(new MidiEvent(messageP, 0));
 
 			// setting Base Track
 			ShortMessage messageB = new ShortMessage();
-			messageB.setMessage(ShortMessage.PROGRAM_CHANGE, 1, 33, 0);
-			track[1].add(new MidiEvent(messageB, 0));
+			messageB.setMessage(ShortMessage.PROGRAM_CHANGE, 2, 33 - 1, 0);
+			track[2].add(new MidiEvent(messageB, 0));
 
 			// setting Drum Track
 			ShortMessage messageD = new ShortMessage();
