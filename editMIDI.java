@@ -56,7 +56,7 @@ public class editMIDI {
 		try {
 			mainSequence = MidiSystem.getSequence(saveMIDI);
 			mainTrack = mainSequence.getTracks();
-			tickplus = mainTrack[0].ticks();
+			tickplus = mainTrack[1].ticks();
 
 			// add Melody(Piano) Data (2 measure)
 			while (true) {
